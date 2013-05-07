@@ -1,0 +1,78 @@
+log {
+  display: block;
+  max-width: 50em;
+  margin: 2em auto;
+  background: #ccc url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAmUlEQVQYV12Q2wrEIAxEVaSI+P/f6JMPIkWk1OUEpmwrSEicW/S11n0ch1trOWqM0V3X9erP83S+tbZ55HwBmlF9733DSCmZ2n3fD4HZnNPlnJ3/WisCMXAIIVg1RQ2wQBFlXAADRNUUSykWnosNRB052DJqxAaMokjMX1vLTl+Eqr7OMpKLHP+ZBNDmlpEGMI9jjMdSSxHhB0QBnc28Jnb5AAAAAElFTkSuQmCC);
+
+}
+
+logentry:before {
+  display: inline-block;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+  color: #7488a7;
+  content: "Revision " attr(revision);
+}
+
+logentry {
+  display: block;
+  margin-bottom: 1.5em;
+  padding: 1em;
+
+  font: 0.875em/1.25 Arial, sans-serif;
+  color: #999;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.25em;
+  box-shadow: 0px 1px 3px #ccc;
+}
+
+author {
+  float: right;
+}
+
+date {
+  display: block;
+  width: 8.45em;
+  overflow: hidden;
+  white-space: pre;
+  float: right;
+  clear: right;
+}
+
+msg {
+  display: block;
+  clear: both;
+  white-space: pre-wrap;
+  color: black;
+  margin-top: 1em;
+}
+
+paths { clear: both; }
+path {
+  display: list-item;
+  list-style-type: none;
+  font-family: monospace;
+  line-height: 1.5;
+}
+
+path:before{
+  display: inline-block;
+  content: attr(action);
+  margin-right: 0.45rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  text-align: center;
+
+  font-size: 1em;
+  line-height: 0.9rem;
+
+  color: #fff;
+  border-radius: 0.25em;
+  background-color: #8d8d8d;
+}
+
+path[action='A']:before { background-color: #7fb347; }
+path[action='M']:before { background-color: #5d89d9; }
+path[action='D']:before { background-color: #d16666; }
+

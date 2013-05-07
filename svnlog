@@ -1,0 +1,15 @@
+#!/bin/sh
+
+##
+# Creates a more readable SVN log in the browser
+#
+# 1. Creates temporary file
+# 2. Calls svn log (with optional parameters) and injects CSS into XML output
+# 3. Opens file in default browser
+
+TMPFILE=/tmp/svnlog-`mktemp -u XXXXXX`.xml || exit 1
+SCRIPTPATH=$(dirname "$0")
+REPLACEMENT="s|<\?xml version=\"1\.0\"\?>|<\?xml version=\"1\.0\"\?><\?xml-stylesheet type=\"text/css\" media=\"screen\" href=\"$SCRIPTPATH/svnlog\.css\"\?>|"
+
+svn log --xml --limit 20 $* | sed -E "$REPLACEMENT" >> $TMPFILE
+open $TMPFILE -a "$(VERSIONER_PERL_PREFER_32_BIT=true perl -MMac::InternetConfig -le 'print +(GetICHelper "http")[1]')"
